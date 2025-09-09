@@ -1,0 +1,50 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# VS Code settings
+.vscode/
+
+# Environment variables and virtual environments
+.env
+.venv/
+env/
+venv/
+ENV/
+myenv/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Python egg files
+*.egg
+*.egg-info/
+dist/
+build/
+
+# PyInstaller
+*.spec
+
+# Test output
+htmlcov/
+.coverage
+.tox/
+.nox/
+.cache/
+
+# Data files
+*.sqlite3
+*.db
+*.h5
+*.pkl
+
+# Weather Prediction System

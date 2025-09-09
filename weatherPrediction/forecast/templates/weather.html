@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="icon" href="{% static 'img/site-pic.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <title>Document</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            min-height: 100vh;
+            color: white;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            margin-bottom: 10px;
+        }
+
+
+        .hero-section {
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: white !important;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/weather">WeatherApp</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav2">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav2">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/weather">Weather</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/about">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="{{description}}" style="top: 10vh;">
+        <section class="side-container">
+            <form method="post">
+                {% csrf_token %}
+                <div class="search-container">
+                    <div style="width: 22px; height: 22px; color: white;" class="weather-icon">
+                        <i class="bi bi-cloud-fog"></i>
+                    </div>
+                    <input type="text" name="city" class="geo-input" placeholder="Enter city name"
+                        value="{{location}}" />
+                    <button class="search-button">
+                        <div style="width: 22px; height: 22px; color: white;">
+                            <i class="bi bi-search"></i>
+                        </div>
+                    </button>
+                </div>
+            </form>
+            <div class="day-stats">
+                <h2 class="day-stats__temperature">
+                    <span class="day-stats__temperature_value">{{current_temp}}</span>°
+                </h2>
+                <h3 class="day-stats__feelslike">
+                    Feels like:&nbsp&nbsp<span class="day-stats__feelslike_value">{{feels_like}}</span>°
+                </h3>
+                <ul class="day-stats_conditions">
+                    <li>
+                        <p class="day-stats_condition">
+                            <span class="day-stats__humidity">{{humidity}}</span>%
+                        </p>
+                        <p class="day-stats__condition_text">of Humidity</p>
+                    </li>
+                    <li>
+                        <p class="day-stats_condition">
+                            <span class="day-stats__clouds">{{clouds}}</span>%
+                        </p>
+                        <p class="day-stats__condition_text">of Clouds</p>
+                    </li>
+                </ul>
+            </div>
+            <img src="{% static 'img/side-blur.png' %}" class="side-blur" alt="blur" />
+        </section>
+        <section class="main-container">
+            <h4 class="secondary-title">Weather Forecast</h4>
+            <h1 class="weather__primary-title">{{description}}</h1>
+            <div class="weather__location">
+                <div style="width: 15px; height: 15px; color: white;" class="location-icon">
+                    <i class="bi bi-geo-alt"></i>
+                </div>
+                <p class="weather__location-text">
+                    <span class="weather__location-city">{{city}}</span>
+                    <span class="weather__location-country">{{country}}</span>
+                    <span class="weather__location-date">{{time}}</span>
+                </p>
+            </div>
+            <p class="weather__primary-stats">
+                Wind speed is
+                <span class="weatherWindKph">{{wind}}</span> kmph. Pressure is
+                <span class="weatherPressure">{{pressure}} </span>mb. Visibility is
+                <span class="weatherSnow">{{visibility}} </span>. Maximum temperature is
+                <span class="weatherMaxTemp">{{MaxTemp}} </span>° and minimum temperature is
+                <span class="weatherMinTemp">{{MinTemp}}</span>°.
+            </p>
+            <ul class="forecast">
+                <li class="forecast-item">
+                    <p class="forecast-time">{{time1}}</p>
+                    <p class="forecast-temperature">
+                        &nbsp;<span class="forecast-temperatureValue">{{temp1}}</span>°
+                    </p>
+                    <p class="forecastWindText">
+                        Humidity: <span class="forecast-HumidityValue">{{hum1}}%</span>
+                    </p>
+                </li>
+                <li class="forecast-item">
+                    <p class="forecast-time">{{time2}}</p>
+                    <p class="forecast-temperature">
+                        &nbsp;<span class="forecast-temperatureValue">{{temp2}}</span>°
+                    </p>
+                    <p class="forecastWindText">
+                        Humidity: <span class="forecast-HumidityValue">{{hum2}}</span>%
+                    </p>
+                </li>
+                <li class="forecast-item">
+                    <p class="forecast-time">{{time3}}</p>
+                    <p class="forecast-temperature">
+                        &nbsp;<span class="forecast-temperatureValue">{{temp3}}</span>°
+                    </p>
+                    <p class="forecastWindText">
+                        Humidity: <span class="forecast-HumidityValue">{{hum3}}</span>%
+                    </p>
+                </li>
+                <li class="forecast-item">
+                    <p class="forecast-time">{{time4}}</p>
+                    <p class="forecast-temperature">
+                        &nbsp;<span class="forecast-temperatureValue">{{temp4}}</span>°
+                    </p>
+                    <p class="forecastWindText">
+                        Humidity: <span class="forecast-HumidityValue">{{hum4}}</span>%
+                    </p>
+                </li>
+                <li class="forecast-item">
+                    <p class="forecast-time">{{time5}}</p>
+                    <p class="forecast-temperature">
+                        &nbsp;<span class="forecast-temperatureValue">{{temp5}}</span>°
+                    </p>
+                    <p class="forecastWindText">
+                        Humidity: <span class="forecast-HumidityValue">{{hum5}}</span>%
+                    </p>
+                </li>
+            </ul>
+            <canvas id="chart" height="45px"></canvas>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="{% static 'js/chartSetup.js' %}"></script>
+</body>
+
+</html>
