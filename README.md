@@ -4,7 +4,7 @@
 
 ### 1. Dataset
 
-- Real-world weather dataset (mention its source, e.g., Kaggle, NOAA,
+- Real-World weather dataset (mention its source, e.g., Kaggle, NOAA,
   IMD, or any other).
 - Features used: temperature, humidity, wind speed, pressure,
   precipitation, etc.
